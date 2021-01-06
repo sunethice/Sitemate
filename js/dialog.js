@@ -1,7 +1,7 @@
-export function Dialog(btnElement) {
+export function Dialog(btnElement, msgVal, yesCallback, noCallback) {
   //   const btn = btnElement.querySelectorAll(".star");
   btnElement.addEventListener("click", function (event) {
-    showDialog("Are you sure you want to continue?");
+    showDialog(msgVal);
   });
 
   function showDialog(message) {
@@ -10,9 +10,9 @@ export function Dialog(btnElement) {
     var result = confirm(message); //"Are you sure?");
 
     if (result) {
-      messageDiv.innerHTML = "You just clicked Yes";
+      yesCallback();
     } else {
-      messageDiv.innerHTML = "You just clicked Cancel";
+      noCallback();
     }
   }
 }
